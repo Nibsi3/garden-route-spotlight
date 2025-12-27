@@ -1,123 +1,51 @@
 "use client";
 
-import { use, useMemo, useEffect, useState } from "react";
+import { use, useMemo, useEffect } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { POSTS } from "../posts";
-import { BlogSidebar } from "@/components/blog/BlogSidebar";
-
-type BusinessDetails = {
-  name: string;
-  tagline: string;
-  phone: string;
-  hours: string;
-  location: string;
-  website: string;
-  features: string[];
-};
-
-const extractBusinessDetails = (content: string) => {
-  // Parse business details from HTML content
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(content, 'text/html');
-
-  const businessCard = doc.querySelector('.business-details-card');
-  if (!businessCard) return null;
-
-  const name = businessCard.querySelector('.business-name')?.textContent || '';
-  const tagline = businessCard.querySelector('.business-tagline')?.textContent || '';
-
-  // Extract contact info
-  const phone = businessCard.querySelector('.contact-link')?.textContent || '';
-
-  // Find hours by looking through info-items
-  let hours = '';
-  let hoursNote = '';
-  const infoItems = businessCard.querySelectorAll('.info-item');
-  infoItems.forEach(item => {
-    const label = item.querySelector('.info-label');
-    if (label?.textContent?.toLowerCase().includes('hours')) {
-      hours = item.querySelector('.info-value')?.textContent || '';
-      hoursNote = item.querySelector('.info-note')?.textContent || '';
-    }
-  });
-
-  // Find location
-  let location = '';
-  let locationNote = '';
-  infoItems.forEach(item => {
-    const label = item.querySelector('.info-label');
-    if (label?.textContent?.toLowerCase().includes('location')) {
-      location = item.querySelector('.info-value')?.textContent || '';
-      locationNote = item.querySelector('.info-note')?.textContent || '';
-    }
-  });
-
-  const websiteElement = businessCard.querySelector('.website-link');
-  const website = websiteElement?.textContent || '';
-
-  // Extract key features
-  const features: string[] = [];
-  const featureElements = businessCard.querySelectorAll('.feature-tag');
-  featureElements.forEach(feature => {
-    features.push(feature.textContent || '');
-  });
-
-  return {
-    name,
-    tagline,
-    phone,
-    hours: hoursNote ? `${hours} ${hoursNote}` : hours,
-    location: locationNote ? `${location} ${locationNote}` : location,
-    website,
-    features
-  };
-};
 
 export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const post = useMemo(() => POSTS.find((p) => p.slug === slug), [slug]);
-  if (!post) return notFound();
 
   // Track blog read
   useEffect(() => {
+    if (!post) return;
+
     const trackRead = async () => {
       try {
-        await fetch('/api/metrics/blog', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+        await fetch("/api/metrics/blog", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             blogSlug: slug,
-            action: 'read'
-          })
+            action: "read",
+          }),
         });
       } catch (error) {
-        console.error('Failed to track blog read:', error);
+        console.error("Failed to track blog read:", error);
       }
     };
 
     // Track read after a short delay to ensure user is actually reading
     const timer = setTimeout(trackRead, 2000);
     return () => clearTimeout(timer);
-  }, [slug]);
+  }, [slug, post]);
 
-  const published = POSTS.filter((p) => p.status !== 'draft');
-  const related = published.filter((p) => p.slug !== post.slug && p.category === post.category).slice(0, 3);
-
-  // Extract business details from the current post (client-side only)
-  const [businessDetails, setBusinessDetails] = useState<BusinessDetails | null>(null);
-
-  useEffect(() => {
-    // Only run on client side where DOMParser is available
-    if (typeof window !== 'undefined') {
-      const details = extractBusinessDetails(post.content);
-      setBusinessDetails(details);
-    }
-  }, [post.content]);
+  const related = useMemo(() => {
+    if (!post) return [];
+    const published = POSTS.filter((p) => p.status !== "draft");
+    return published
+      .filter((p) => p.slug !== post.slug && p.category === post.category)
+      .slice(0, 3);
+  }, [post]);
 
   // Add click tracking to business contact links
   useEffect(() => {
+    if (!post) return;
+
     const attachTracking = () => {
       // Add click tracking to contact links
       const contactLinks = document.querySelectorAll('.contact-link');
@@ -209,6 +137,8 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     return () => clearTimeout(timer);
   }, [post.slug]); // Re-run when post changes
 
+  if (!post) return notFound();
+
   return (
     <main className="min-h-screen relative overflow-hidden bg-[#04060c] text-slate-200 p-6 md:p-10 flex flex-col items-center">
       <div className="noise-overlay" />
@@ -249,7 +179,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           ) : null}
         </header>
 
-        <div className="grid lg:grid-cols-[3fr_1fr] gap-8 items-start">
+        <div className="w-full max-w-4xl mx-auto">
           <article className="space-y-6">
             {post.cover && (
               <div className="relative h-80 w-full overflow-hidden rounded-3xl border border-white/10 glass">
@@ -280,8 +210,6 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               </div>
             )}
           </article>
-
-          <BlogSidebar posts={POSTS} currentSlug={post.slug} currentCategory={post.category} businessDetails={businessDetails || undefined} />
         </div>
 
         {/* Map CTA Section - Full Width */}

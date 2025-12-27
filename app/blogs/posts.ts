@@ -19,7 +19,7 @@ export const POSTS: BlogPost[] = [
     author: "Defaults Lab",
     category: "Stay",
     excerpt:
-      "How Protea Hotel King George keeps its 'default' position for accommodation near Fancourt and the airport.",
+      "Protea Hotel King George stays the easy “default” for George accommodation by removing travel friction: quick airport access, dependable check-ins, and consistent rooms for business and leisure. Here’s what keeps it top-of-mind near Fancourt and the CBD, and why repeat bookings compound over time.",
     tags: ["George", "Stay", "Hospitality"],
     cover: "https://images.unsplash.com/photo-1501117716987-c8e1ecb210af?auto=format&fit=crop&w=1400&q=80",
     status: "Published",
@@ -110,7 +110,7 @@ export const POSTS: BlogPost[] = [
     author: "Mobility Desk",
     category: "Car Hire",
     excerpt:
-      "Arrivals at George Airport funnel straight to Avis. Here's how they defend the 'default' slot.",
+      "At George Airport, the first ten minutes after landing decide the car-hire “default.” Avis wins that moment with counter placement, fast handovers, and predictable support when flights run late. This breakdown shows the operational signals that keep them first choice—even when competitors discount.",
     tags: ["Car Hire", "George Airport", "Mobility"],
     cover: "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1400&q=80",
     status: "Published",
@@ -200,7 +200,7 @@ export const POSTS: BlogPost[] = [
     author: "Food Signals",
     category: "Eat",
     excerpt:
-      "The Fat Fish stays the go-to seafood choice in George. We map how consistency beats novelty.",
+      "The Fat Fish remains George’s seafood “default” by reducing dining risk: reliable quality, clear reservations, and service timing you can plan around. We map the consistency signals that beat novelty and explain why this restaurant stays the safe, high-confidence pick for families, travelers, and business meals.",
     tags: ["Eat", "Seafood", "George"],
     cover: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1400&q=80",
     status: "Published",
@@ -282,7 +282,7 @@ export const POSTS: BlogPost[] = [
     author: "Resort Watch",
     category: "Stay",
     excerpt:
-      "How The Wilderness Hotel anchors lakeside stays and keeps alternatives from rotating in.",
+      "The Wilderness Hotel holds the lakeside “default” in Wilderness by bundling what visitors actually want: location, spa access, and ready-to-book experiences. This post explains how packages reduce planning overhead, why availability matters in peak season, and what keeps alternatives from rotating in.",
     tags: ["Wilderness", "Resort", "Stay"],
     cover: "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1400&q=80",
     status: "Published",
@@ -366,7 +366,7 @@ export const POSTS: BlogPost[] = [
     author: "Coastal Insights",
     category: "Stay",
     excerpt:
-      "Beacon Island remains the default coastal stay in Plettenberg Bay—here's why challengers struggle.",
+      "Beacon Island stays a Plettenberg Bay “default” by offering beachfront certainty with family-ready amenities in one place. We unpack why direct access and trusted routines reduce decision fatigue for holiday planners, and why boutique challengers struggle to displace a resort that solves the whole trip.",
     tags: ["Plett", "Stay", "Resort"],
     cover: "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1400&q=80",
     status: "Published",
@@ -450,7 +450,7 @@ export const POSTS: BlogPost[] = [
     author: "Coffee Culture",
     category: "Coffee",
     excerpt:
-      "The Foundry Roasters holds the coffee default in George. Here's how they maintain quality that keeps customers coming back.",
+      "The Foundry Roasters earns the morning “default” in George with repeatable quality: fresh roasting, trained baristas, and hours that match commuter rhythms. This piece covers how consistency becomes a habit loop for customers—and how a café turns reliability into daily demand.",
     tags: ["Coffee", "George", "Café"],
     cover: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1400&q=80",
     status: "Published",
@@ -533,7 +533,7 @@ export const POSTS: BlogPost[] = [
     author: "Health Services",
     category: "Dental",
     excerpt:
-      "George Dental Care maintains the dental default in George. Here's how they build and keep patient trust.",
+      "George Dental Care holds the dental “default” in George by pairing clinical competence with calm, predictable patient experience. We break down the trust signals—communication, comfort, and comprehensive services—that reduce anxiety and keep families returning instead of shopping around.",
     tags: ["Dental", "George", "Healthcare"],
     cover: "https://images.unsplash.com/photo-1606811951340-8dd032c1416b?auto=format&fit=crop&w=1400&q=80",
     status: "Published",
