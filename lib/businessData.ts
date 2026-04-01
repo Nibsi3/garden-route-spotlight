@@ -626,7 +626,7 @@ export const businessPoints: Record<string, BusinessPoint[]> = {
 
 // Helper to get Google Places photo URL
 export function getPhotoUrl(photoReference: string, maxWidth: number = 400): string {
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY || '***REMOVED***';
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY || '';
   if (photoReference.startsWith('http://') || photoReference.startsWith('https://')) {
     return photoReference;
   }
@@ -637,3 +637,4 @@ export function getPhotoUrl(photoReference: string, maxWidth: number = 400): str
 
   return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=${maxWidth}&photo_reference=${photoReference}&key=${apiKey}`;
 }
+
