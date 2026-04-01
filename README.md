@@ -1,8 +1,17 @@
 # garden route spotlight
 
+![status](https://img.shields.io/badge/status-active-16a34a)
+![stack](https://img.shields.io/badge/stack-next.js%20%7C%20typescript-111827)
+![type](https://img.shields.io/badge/type-local_discovery-0ea5e9)
+
 ![garden route spotlight preview](https://opengraph.githubassets.com/1/Nibsi3/garden-route-spotlight)
 
-Location-focused discovery web app for Garden Route businesses, combining curated data, map utilities, and category-based browsing.
+Local discovery platform for Garden Route businesses with structured listings, search-friendly categories, and map-aware browsing.
+
+## Snapshot
+- **Core value:** make regional businesses easier to discover and compare.
+- **Architecture:** modular App Router setup with reusable components/hooks.
+- **Data layer:** curated listing data with script-assisted updates.
 
 ## What it does
 - Aggregates local business listings into searchable, structured sections.
